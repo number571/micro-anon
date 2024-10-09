@@ -3,7 +3,7 @@
 <h2>
 	<p align="center">
     	<strong>
-        	QB anonymity network with 100 lines of code
+        	Anonymity network in 100 lines of code
    		</strong>
 	</p>
 	<p align="center">
@@ -17,7 +17,7 @@
 	About project
 </h2>
 
-The M-A (`Micro-Anonymous`) network is based on a QB (queue-based) problem (also as [Hidden Lake](https://github.com/number571/go-peer/tree/master/cmd/hidden_lake)). The implementation uses only the standard library of the Go language.
+The `Micro-Anonymous` network is based on a QB (queue-based) problem (also as [Hidden Lake](https://github.com/number571/go-peer/tree/master/cmd/hidden_lake)). The implementation uses only the standard library of the Go language.
 The goal of this network is to minimalize the source code so that even a novice programmer can understand the entire mechanism of its functioning.
 
 ```bash
