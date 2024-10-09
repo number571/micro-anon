@@ -1,4 +1,4 @@
-<img src="_images/ma_logo.png" alt="ma_logo.png"/>
+<img src="images/ma_logo.png" alt="ma_logo.png"/>
 
 <h2>
 	<p align="center">
