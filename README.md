@@ -17,8 +17,7 @@
 	About project
 </h2>
 
-The `Micro-Anonymous` network is based on a QB (queue-based) problem (also as [Hidden Lake](https://github.com/number571/go-peer/tree/master/cmd/hidden_lake)). The implementation uses only the standard library of the Go language.
-The goal of this network is to minimalize the source code so that even a novice programmer can understand the entire mechanism of its functioning.
+The `Micro-Anonymous` network is based on a QB (queue-based) problem (also as [Hidden Lake](https://github.com/number571/go-peer/tree/master/cmd/hidden_lake)). The implementation uses only the standard library of the Go language. The goal of this network is to minimize the source code so that even a novice programmer can understand the entire mechanism of its functioning.
 
 ```bash
 usage: 
