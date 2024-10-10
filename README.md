@@ -19,6 +19,9 @@
         <a href="https://github.com/number571/micro-anon/commits/master">
         	<img src="https://img.shields.io/github/last-commit/number571/micro-anon.svg" alt="Commits" />
 		</a>
+		<a href="https://github.com/number571/awesome-anonymity">
+        	<img src="https://awesome.re/mentioned-badge.svg" alt="Awesome-Anonymity" />
+		</a>
 	</p>
 	About project
 </h2>
