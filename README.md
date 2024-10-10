@@ -13,11 +13,11 @@
         <a href="https://github.com/number571/micro-anon/blob/master/LICENSE">
         	<img src="https://img.shields.io/github/license/number571/micro-anon.svg" alt="License" />
 		</a>
-        <a href="https://github.com/number571/awesome-anonymity/pulse">
-        	<img src="https://img.shields.io/github/commit-activity/m/number571/awesome-anonymity" alt="Activity" />
+        <a href="https://github.com/number571/micro-anon/pulse">
+        	<img src="https://img.shields.io/github/commit-activity/m/number571/micro-anon" alt="Activity" />
 		</a>
-        <a href="https://github.com/number571/awesome-anonymity/commits/master">
-        	<img src="https://img.shields.io/github/last-commit/number571/awesome-anonymity.svg" alt="Commits" />
+        <a href="https://github.com/number571/micro-anon/commits/master">
+        	<img src="https://img.shields.io/github/last-commit/number571/micro-anon.svg" alt="Commits" />
 		</a>
 	</p>
 	About project
