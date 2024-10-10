@@ -36,9 +36,13 @@ go run . [listen-address] [private-key-file] [receiver-key-file] [http-address-1
 ```bash
 # Terminal-1
 $ go run . :7070 ./example/node2/priv.key ./example/node1/pub.key localhost:8080
-> hello <INPUT>
 
 # Terminal-2
 $ go run . :8080 ./example/node1/priv.key ./example/node2/pub.key localhost:7070
-> hello <OUTPUT>
+
+# Terminal-1 <INPUT>
+> hello
+
+# Terminal-2 <OUTPUT>
+> hello
 ```
