@@ -70,9 +70,10 @@ func runQBProblem(ctx context.Context, receiverKey *rsa.PublicKey, hosts []strin
 		case <-ctx.Done():
 			return ctx.Err()
 		case <-time.After(5 * time.Second):
+			encBytes := <-queue
 			for _, host := range hosts {
 				client := &http.Client{Timeout: time.Second}
-				_, _ = client.Post(fmt.Sprintf("http://%s/push", host), "text/plain", bytes.NewBuffer(<-queue))
+				_, _ = client.Post(fmt.Sprintf("http://%s/push", host), "text/plain", bytes.NewBuffer(encBytes))
 			}
 		}
 	}
