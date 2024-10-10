@@ -26,8 +26,7 @@
 The `Micro-Anonymous` network is based on a QB (queue-based) problem (also as [Hidden Lake](https://github.com/number571/go-peer/tree/master/cmd/hidden_lake)). The implementation uses only the standard library of the Go language. The goal of this network is to minimize the source code so that even a novice programmer can understand the entire mechanism of its functioning.
 
 ```bash
-usage: 
-    go run . [listen-address] [private-key-file] [receiver-key-file] [http-address-1, http-address-2, ...]
+go run . [listen-address] [private-key-file] [receiver-key-file] [http-address-1, http-address-2, ...]
 ```
 
 > More information about QB networks in research paper: [Анонимная сеть «Hidden Lake»](https://github.com/number571/go-peer/blob/master/docs/hidden_lake_anonymous_network.pdf)
