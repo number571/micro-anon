@@ -16,7 +16,7 @@ import (
 )
 
 func main() {
-	ctx := context.Background()
+	ctx := context.TODO()
 	go func() { _ = runQBProblem(ctx, getReceiverKey(os.Args[3]), os.Args[4:]) }()
 	_ = runMessageHandler(ctx, getPrivateKey(os.Args[2]), os.Args[1])
 }
