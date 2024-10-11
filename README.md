@@ -4,7 +4,7 @@
 	<p align="center">
     	<strong>
         	Anonymity network in 100 lines of code
-   		</strong>
+   	</strong>
 	</p>
 	<p align="center">
         <a href="https://github.com/topics/golang">
@@ -52,6 +52,11 @@ $ go run . :8080 ./example/node1/priv.key ./example/node2/pub.key localhost:7070
 # Terminal-2 <OUTPUT>
 > hello
 ```
+
+## Advantages
+
+1. <b>Simplicity</b>. The network is written without using third-party libraries, as well as without using hacks to pack it into 100 lines of code. As a result, even novice programmers can understand the logic of its operation, and even novice cryptographers can check for security.
+2. <b>Anonymity</b>. This network really provides a good level of anonymity, protecting against all passive observations, including attacks by a global observer. Active observations are also impossible, because it requires the implementation of the composition of the conditions: 1) the attacker knows your public key, 2) you often talk to several subscribers at once, 3) the attacker must be in the list of subscribers with whom you are actively talking. But the implementation lacks the ability to communicate with multiple subscribers, and therefore the second condition will never be fulfilled.
 
 ## Vulnerabilities
 
