@@ -27,7 +27,7 @@
 </h2>
 
 > [!WARNING]
-> This anonymous network was written solely for the purpose of demonstrating the minimalism of the QB problem. The implementation lacks an authentication mechanism, as well as mechanisms to counter DoS/DDoS attacks, spam and message repetition. You can read more about vulnerabilities and implementation-specific issues at the end of this README.
+> This anonymous network was written solely for the purpose of demonstrating the minimalism of the QB problem, and therefore it should be considered more as a template for modifications/editing than as a ready-made implementation. The implementation lacks an authentication mechanism, as well as mechanisms to counter DoS/DDoS attacks, spam and message repetition. You can read more about vulnerabilities and implementation-related issues at the end of this README.
 
 The `Micro-Anonymous` network is based on a QB (queue-based) problem (also as [Hidden Lake](https://github.com/number571/go-peer/tree/master/cmd/hidden_lake)). The implementation uses only the standard library of the Go language. The goal of this network is to minimize the source code so that even a novice programmer can understand the entire mechanism of its functioning.
 
