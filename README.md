@@ -55,10 +55,10 @@ $ go run . :8080 ./example/node1/priv.key ./example/node2/pub.key localhost:7070
 
 ## Vulnerabilities
 
-1. Lack of authentication. It is unknown which particular participant sent you the message and there is no authenticated data to confirm that the interlocutor is exactly who he was introduced to at the beginning of the conversation.
-2. DoS/DDoS attacks. An attacker can generate or collect many ciphertexts and send them to one node at a time, thereby overloading the processor power of the latter to perform decryption functions.
-3. Spam. Due to the lack of F2F or other trusted connection mechanisms, each node can communicate with any other node in the network if it knows the public key. As a result, an attacker can send many meaningless messages from different accounts without being able to block it. The only way to counteract it is to change your own private key.
-4. Repeat messages. An attacker can copy the ciphertexts of the network and re-redirect them to a specific node due to the lack of verification of previously received messages. As a result, if the redirected ciphertext is true, the messages will be duplicated.
+1. <b>Lack of authentication</b>. It is unknown which particular participant sent you the message and there is no authenticated data to confirm that the interlocutor is exactly who he was introduced to at the beginning of the conversation.
+2. <b>DoS/DDoS attacks</b>. An attacker can generate or collect many ciphertexts and send them to one node at a time, thereby overloading the processor power of the latter to perform decryption functions.
+3. <b>Spam</b>. Due to the lack of F2F or other trusted connection mechanisms, each node can communicate with any other node in the network if it knows the public key. As a result, an attacker can send many meaningless messages from different accounts without being able to block it. The only way to counteract it is to change your own private key.
+4. <b>Repeat messages</b>. An attacker can copy the ciphertexts of the network and re-redirect them to a specific node due to the lack of verification of previously received messages. As a result, if the redirected ciphertext is true, the messages will be duplicated.
 
 ## License
 
