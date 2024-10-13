@@ -3,7 +3,7 @@
 <h2>
 	<p align="center">
     	<strong>
-        	Anonymity network in 100 lines of code
+        	Anonymous network in 100 lines of code
    	</strong>
 	</p>
 	<p align="center">
