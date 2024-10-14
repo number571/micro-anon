@@ -35,20 +35,31 @@ The `Micro-Anonymous` network is based on a QB (queue-based) problem (also as [H
 go run . [listen-address] [priv-key-file] [recv-key-file] [http-addr-1, http-addr-2, ...]
 ```
 
-> More information about QB networks in research paper: [Анонимная сеть «Hidden Lake»](https://github.com/number571/go-peer/blob/master/docs/hidden_lake_anonymous_network.pdf)
+## How it works
+
+1. Each message `m` is encrypted with the recipient's key `k`: `c = Ek(m)`,
+2. Message `c` is sent during period `= T` to all network participants,
+3. The period `T` of one participant is independent of the periods `T1, T2, ..., Tn` of other participants,
+4. If there is no message for the period `T`, then a false message `v` is sent to the network without a recipient (with a random key `r`): `c = Er(v)`,   
+5. Each participant tries to decrypt the message they received from the network: `m = Dk(c)`.
+
+<p align="center"><img src="images/ma_qbp.png" alt="ma_qbp.png"/></p>
+<p align="center">Figure 1. QB-network with three nodes {A,B,C}</p>
+
+> More information about QB networks in research paper: [hidden_lake_anonymous_network.pdf](docs/hidden_lake_anonymous_network.pdf)
 
 ## Example
 
 ```bash
 # Terminal-1
 $ go run . :7070 ./example/node2/priv.key ./example/node1/pub.key localhost:8080
-
 # Terminal-2
 $ go run . :8080 ./example/node1/priv.key ./example/node2/pub.key localhost:7070
+```
 
+```bash
 # Terminal-1 <INPUT>
 > hello
-
 # Terminal-2 <OUTPUT>
 > hello
 ```
