@@ -18,11 +18,15 @@ import (
 func main() {
 	privKeyBytes, _ := os.ReadFile(os.Args[2])
 	privKey, err := x509.ParsePKCS1PrivateKey(privKeyBytes)
-	doif(err != nil, func() { panic(err) })
+	if err != nil {
+		panic(err)
+	}
 
 	pubKeyBytes, _ := os.ReadFile(os.Args[3])
 	pubKey, err := x509.ParsePKCS1PublicKey(pubKeyBytes)
-	doif(err != nil, func() { panic(err) })
+	if err != nil {
+		panic(err)
+	}
 
 	ctx := context.TODO()
 	go func() { _ = runQBProblem(ctx, pubKey, os.Args[4:]) }()
@@ -34,7 +38,9 @@ func runMessageHandler(ctx context.Context, privateKey *rsa.PrivateKey, addr str
 	mux.HandleFunc("/push", func(w http.ResponseWriter, r *http.Request) {
 		encBytes, _ := io.ReadAll(r.Body)
 		decBytes, err := rsa.DecryptOAEP(sha256.New(), rand.Reader, privateKey, encBytes, nil)
-		doif(err == nil, func() { fmt.Println(string(decBytes)) })
+		if err == nil {
+			fmt.Println(string(decBytes))
+		}
 	})
 	server := &http.Server{Addr: addr, Handler: mux}
 	go func() {
@@ -48,7 +54,9 @@ func runQBProblem(ctx context.Context, receiverKey *rsa.PublicKey, hosts []strin
 	queue := make(chan []byte, 256)
 	go func() {
 		pr, err := rsa.GenerateKey(rand.Reader, receiverKey.N.BitLen())
-		doif(err != nil, func() { panic(err) })
+		if err != nil {
+			panic(err)
+		}
 		for {
 			select {
 			case <-ctx.Done():
@@ -56,7 +64,9 @@ func runQBProblem(ctx context.Context, receiverKey *rsa.PublicKey, hosts []strin
 			default:
 				if len(queue) == 0 {
 					encBytes, err := rsa.EncryptOAEP(sha256.New(), rand.Reader, &pr.PublicKey, []byte("_"), nil)
-					doif(err == nil, func() { queue <- encBytes })
+					if err == nil {
+						queue <- encBytes
+					}
 				}
 			}
 		}
@@ -69,7 +79,9 @@ func runQBProblem(ctx context.Context, receiverKey *rsa.PublicKey, hosts []strin
 			default:
 				input, _, _ := bufio.NewReader(os.Stdin).ReadLine()
 				encBytes, err := rsa.EncryptOAEP(sha256.New(), rand.Reader, receiverKey, input, nil)
-				doif(err == nil, func() { queue <- encBytes })
+				if err == nil {
+					queue <- encBytes
+				}
 			}
 		}
 	}()
@@ -84,11 +96,5 @@ func runQBProblem(ctx context.Context, receiverKey *rsa.PublicKey, hosts []strin
 				_, _ = client.Post(fmt.Sprintf("http://%s/push", host), "text/plain", bytes.NewBuffer(encBytes))
 			}
 		}
-	}
-}
-
-func doif(isTrue bool, do func()) {
-	if isTrue {
-		do()
 	}
 }
