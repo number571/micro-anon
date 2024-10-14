@@ -16,9 +16,17 @@ import (
 )
 
 func main() {
+	privKeyBytes, _ := os.ReadFile(os.Args[2])
+	privKey, err := x509.ParsePKCS1PrivateKey(privKeyBytes)
+	doif(err != nil, func() { panic(err) })
+
+	pubKeyBytes, _ := os.ReadFile(os.Args[3])
+	pubKey, err := x509.ParsePKCS1PublicKey(pubKeyBytes)
+	doif(err != nil, func() { panic(err) })
+
 	ctx := context.TODO()
-	go func() { _ = runQBProblem(ctx, getReceiverKey(os.Args[3]), os.Args[4:]) }()
-	_ = runMessageHandler(ctx, getPrivateKey(os.Args[2]), os.Args[1])
+	go func() { _ = runQBProblem(ctx, pubKey, os.Args[4:]) }()
+	fmt.Println(runMessageHandler(ctx, privKey, os.Args[1]))
 }
 
 func runMessageHandler(ctx context.Context, privateKey *rsa.PrivateKey, addr string) error {
@@ -71,26 +79,12 @@ func runQBProblem(ctx context.Context, receiverKey *rsa.PublicKey, hosts []strin
 			return ctx.Err()
 		case <-time.After(5 * time.Second):
 			encBytes := <-queue
+			client := &http.Client{Timeout: time.Second}
 			for _, host := range hosts {
-				client := &http.Client{Timeout: time.Second}
 				_, _ = client.Post(fmt.Sprintf("http://%s/push", host), "text/plain", bytes.NewBuffer(encBytes))
 			}
 		}
 	}
-}
-
-func getPrivateKey(privateKeyFile string) *rsa.PrivateKey {
-	privKeyBytes, _ := os.ReadFile(privateKeyFile)
-	priv, err := x509.ParsePKCS1PrivateKey(privKeyBytes)
-	doif(err != nil, func() { panic(err) })
-	return priv
-}
-
-func getReceiverKey(receiverKeyFile string) *rsa.PublicKey {
-	pubKeyBytes, _ := os.ReadFile(receiverKeyFile)
-	pub, err := x509.ParsePKCS1PublicKey(pubKeyBytes)
-	doif(err != nil, func() { panic(err) })
-	return pub
 }
 
 func doif(isTrue bool, do func()) {
