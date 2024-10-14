@@ -48,7 +48,7 @@ go run . [listen-address] [priv-key-file] [recv-key-file] [http-addr-1, http-add
 
 > More information about QB networks in research paper: [hidden_lake_anonymous_network.pdf](docs/hidden_lake_anonymous_network.pdf)
 
-## Example
+## Build and run
 
 ```bash
 # Terminal-1
@@ -68,6 +68,11 @@ $ go run . :8080 ./example/node1/priv.key ./example/node2/pub.key localhost:7070
 
 1. <b>Simplicity</b>. The network is written without using third-party libraries, as well as without using hacks to pack it into 100 lines of code. As a result, even novice programmers can understand the logic of its operation, and even novice cryptographers can check for security.
 2. <b>Anonymity</b>. This network really provides a good level of anonymity, protecting against all passive observations, including attacks by a global observer. Active observations are also impossible, because it requires the implementation of the composition of the conditions: 1) the attacker knows your public key, 2) you often talk to several subscribers at once, 3) the attacker must be in the list of subscribers with whom you are actively talking. But the implementation lacks the ability to communicate with multiple subscribers, and therefore the second condition will never be fulfilled.
+
+## Disadvantages
+
+1. <b>Lack of anonymity between interlocutors</b>. The QB problem successfully anonymizes the fact of communication and communication between interlocutors from outside observers, including a global observer, but does not anonymize the communication of interlocutors to each other.
+2. <b>The scalability problem</b>. In the QB problem, each participant tries to decrypt the message he receives from the network, without knowing in advance whether it belongs to him. As a result, when the system is expanded, one message can be sent to all network participants, which leads to a dependence of the linear load on the number of nodes.
 
 ## Vulnerabilities
 
