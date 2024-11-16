@@ -46,7 +46,7 @@ go run . [listen-address] [priv-key-file] [recv-key-file] [http-addr-1, http-add
 <p align="center"><img src="images/ma_qbp.png" alt="ma_qbp.png"/></p>
 <p align="center">Figure 1. QB-network with three nodes {A,B,C}</p>
 
-> More information about QB networks in research paper: [hidden_lake_anonymous_network.pdf](docs/hidden_lake_anonymous_network.pdf)
+> More information about QB networks in research paper: [hidden_lake_anonymous_network.pdf](https://github.com/number571/hidden-lake/blob/master/docs/hidden_lake_anonymous_network.pdf)
 
 ## Build and run
 
